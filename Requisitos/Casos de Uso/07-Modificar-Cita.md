@@ -13,7 +13,7 @@
 1. El usuario desea modificar una cita para un paciente.
 1. El usuario inicia el programa y solicita modificar una cita
 1. El usuario introduce el nombre y apellidos del paciente que busca modificar la cita.
-1. El usuario modifica 
+1. El usuario modifica los datos deseados de la cita del paciente.
 1. El sistema confirma la creacion de la cita y la muestra por pantalla.
 
 **Postcondiciones**:
