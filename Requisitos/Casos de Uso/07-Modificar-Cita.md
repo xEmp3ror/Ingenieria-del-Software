@@ -7,7 +7,7 @@
 **Actores secundarios**: Paciente
 
 **Precondiciones**:
-* Debe existir la cita del paciente que se desea modificar
+* Debe existir la cita del paciente que se desea modificar.
 
 **Flujo principal**:
 1. El usuario desea modificar una cita para un paciente.
