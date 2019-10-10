@@ -1,7 +1,7 @@
 **ID**: 06
 **Nombre**: Crear cita
 
-**Prioridad** (de 1 a 10): 8
+**Prioridad:** Alta
 
 **Responsable**: Juan José Ropero Cerro
 

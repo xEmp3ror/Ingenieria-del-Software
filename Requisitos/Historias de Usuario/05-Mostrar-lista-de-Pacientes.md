@@ -1,7 +1,7 @@
 **ID**: 05
 **Nombre**: Mostrar lista de Pacientes
 
-**Prioridad** (de 1 a 10): 6
+**Prioridad:** Media
 
 **Responsable**: Juan José Ropero Cerro
 

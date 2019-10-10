@@ -1,7 +1,7 @@
 **ID**: 07
 **Nombre**: Modificar cita
 
-**Prioridad** (de 1 a 10): 7
+**Prioridad:** Alta
 
 **Responsable**: Juan José Ropero Cerro
 
