@@ -1,7 +1,7 @@
 **ID**: 08
 **Nombre**: Mostrar cita del Paciente
 
-**Prioridad** (de 1 a 10): 7
+**Prioridad:** Media
 
 **Responsable**: Juan José Ropero Cerro
 
