@@ -17,6 +17,7 @@
 
 1. El sistema lee todo lo que se ha cambiado.
 2. El sistema vuelca todo en el archivo de la base de datos.
+3. Los guarda.
 
 **Postcondiciones**:
 
