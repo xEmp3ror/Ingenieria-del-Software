@@ -20,4 +20,4 @@
 
 **Flujos alternativos**:
 
-4.a. Si no existe ningun paciente, se muestra un mensaje de error.
+4.a. Si no existe ningun paciente, el sistema no muestra ningun paciente.
