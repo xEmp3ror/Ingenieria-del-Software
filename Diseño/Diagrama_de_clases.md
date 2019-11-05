@@ -1,1 +1,1 @@
-![Diagrama_de_clases].(Class Diagram1.png)
+![Diagrama de clases](Class Diagram1.png)
