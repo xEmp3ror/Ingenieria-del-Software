@@ -1,0 +1,4 @@
+
+bool Crear_cita()
+{
+}
