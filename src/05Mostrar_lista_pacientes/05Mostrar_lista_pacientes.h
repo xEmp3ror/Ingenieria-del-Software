@@ -1,4 +1,6 @@
-#ifndef 05MOSTRAR_LISTA_PACIENTES.H
-#define 05MOSTRAR_LISTA_PACIENTES.H
+#ifndef 05MOSTRAR_LISTA_PACIENTES_H
+#define 05mOSTRAR_LISTA_PACIENTES_H
+
+void Mostrar_lista_pacientes();
 
 #endif
