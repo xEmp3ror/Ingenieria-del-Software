@@ -1,4 +1,4 @@
-#include "cita.h"
+#include "cita.hpp"
 
 Cita::Cita()
 {

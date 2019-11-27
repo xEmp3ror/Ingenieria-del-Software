@@ -1,4 +1,6 @@
 
-bool Crear_cita()
+bool Crear_cita(list<Cita>*c)
 {
+	Cita aux;
+	
 }
