@@ -47,6 +47,7 @@ bool CrearCita(list <Cita> *c)
 		aux.setTelefono(num);
 		aux.setFechayHora(fyh);
 		c->push_back(aux);
+		
 		return true;
 	}else
 	{
