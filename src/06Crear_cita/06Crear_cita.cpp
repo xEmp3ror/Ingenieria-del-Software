@@ -1,17 +1,20 @@
-#include "06Crear_cita.hpp"
-#include <string>
 #include <iostream>
+#include <string>
 #include <ctime>
 #include <cstdio>
 
+#include "06Crear_cita.hpp"
+
 using namespace std;
 
-bool Crear_cita(list <Cita> *c)
+bool CrearCita(list <Cita> *c)
 {
 	Cita aux;
 	string name;
 	int num;
 	struct tm fyh;
+	list<Cita>::iterator it;
+	int N=0;
 
 	cout<<"Introduza el nombre del paciente\n";
 	cin>>name;
@@ -29,15 +32,24 @@ bool Crear_cita(list <Cita> *c)
 	cin>>fyh.tm_mon;
 	cout<<"Año";
 	cin>>fyh.tm_year;
-	//if(Buscarcita(c,name,num)==false)
-	//{
+
+	for(it=c->begin();it!=c->end();it++)
+	{
+		if((name.compare(it->getNombre())==0)&&(it->getTelefono()==num))
+		{
+			N++;
+		}
+	}
+
+	if(N==1)
+	{
 		aux.setNombre(name);
 		aux.setTelefono(num);
 		aux.setFechayHora(fyh);
 		c->push_back(aux);
 		return true;
-	//}else
-//	{
-	//	return false;
-//	}
+	}else
+	{
+		return false;
+	}
 }
