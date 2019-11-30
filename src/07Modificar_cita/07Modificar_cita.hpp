@@ -1,4 +1,10 @@
-#ifndef 07MODIFICAR_CITA.H
-#define 07mODIFICAR_CITA.H
+#ifndef MODIFICAR_CITA_H
+#define MODIFICAR_CITA_H
+
+#include <list>
+
+#include "cita.hpp"
+
+bool ModificarCita(list <Cita> *c,string name,int number);
 
 #endif
