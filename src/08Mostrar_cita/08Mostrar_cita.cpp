@@ -1,14 +1,25 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdio>
+#include <string>
 
-bool Mostrar_cita(string Nombre,string Apellidos)
+#include "07Modificar_cita.hpp"
+
+bool MostrarCita(list<Cita> *c,string name,int number)
 {
-	list<Citas>::iterator itC;
-	for(it=citas_.begin();it!=citas_.end(),it++)
+	list<Cita>::iterator it;
+	struct tm fyh;
+	
+	for(it=c->begin();it!=c->end();it++)
 	{
-		if((strcmp(it->getNombre()Nombre)==0)&&(strcmp(it->getApellidos()==Apellidos)==0))
+		if((name.compare(it->getNombre())==0)&&(it->getTelefono()==telf))
 		{
-			cout<<it->getNombre()<<"|"<<it->getApellidos()<<"|"<<it->getTelefono()<<"|"<<it->getCorreo()<<"|"<<it->getDireccion()<<"\n";
-			cout<<"Fecha: "<<it->getFecha()<<"\n";
-			
+			fyh=it->getFechayHora();
+			cout<<it->getNombre()<<"|"<<it->getTelefono()<<"|"<<it->getDireccion()<<"\n";
+			cout<<"Fecha: "<<fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min;
+			return true;
 		}
 	}
+	return false;
 }

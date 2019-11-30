@@ -1,6 +1,10 @@
-#ifndef 08MOSTRAR_CITA_H
-#define 08MOSTRAR_CITA_H
+#ifndef MOSTRAR_CITA_H
+#define MOSTRAR_CITA_H
 
-void Mostrar_cita();
+#include <list>
+
+#include "cita.hpp"
+
+void MostrarCita(list<Cita> *c,string name,int number);
 
 #endif
