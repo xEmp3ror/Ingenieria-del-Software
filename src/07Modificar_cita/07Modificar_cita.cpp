@@ -1,8 +1,4 @@
 #include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdio>
-#include <string>
 
 #include "07Modificar_cita.hpp"
 
@@ -10,7 +6,6 @@ using namespace std;
 
 bool ModificarCita(list <Cita> *c,string name,int number)
 {
-	Cita aux;
 	list<Cita>::iterator it;
 	int N=0;
 	struct tm fyh;
@@ -26,7 +21,6 @@ bool ModificarCita(list <Cita> *c,string name,int number)
 	//Si el Valor de N no ha variado
 	if(N==0)
 	{
-		cout<<"La cita que esta buscando no existe\n";
 		return false;
 	}
 

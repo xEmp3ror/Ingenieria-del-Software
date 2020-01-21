@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <string>
 
-#include "07Modificar_cita.hpp"
+#include "08Mostrar_cita.hpp"
 
 bool MostrarCita(list<Cita> *c,string name,int number)
 {

@@ -1,7 +1,4 @@
 #include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdio>
 
 #include "06Crear_cita.hpp"
 
@@ -21,16 +18,16 @@ bool CrearCita(list <Cita> *c)
 	cout<<"Introduza el numero telefonico del paciente\n";
 	cin>>num;
 	cout<<"Introduzca la hora de la cita\n";
-	cout<<"Hora";
+	cout<<"Hora ";
 	cin>>fyh.tm_hour;
-	cout<<"Minuto";
+	cout<<"Minuto ";
 	cin>>fyh.tm_min;
 	cout<<"Introduzca el Dia,Mes,Año de la cita,en numero\n";
-	cout<<"Dia";
+	cout<<"Dia ";
 	cin>>fyh.tm_mday;
-	cout<<"Mes";
+	cout<<"Mes ";
 	cin>>fyh.tm_mon;
-	cout<<"Año";
+	cout<<"Año ";
 	cin>>fyh.tm_year;
 
 	for(it=c->begin();it!=c->end();it++)
@@ -41,7 +38,7 @@ bool CrearCita(list <Cita> *c)
 		}
 	}
 
-	if(N==1)
+	if(N==0)
 	{
 		aux.setNombre(name);
 		aux.setTelefono(num);
