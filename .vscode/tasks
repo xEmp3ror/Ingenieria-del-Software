@@ -1,0 +1,54 @@
+# 1 "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/.vscode/tasks.json"
+# 1 "/usr/bin//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 31 "<command-line>"
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 32 "<command-line>" 2
+# 1 "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/.vscode/tasks.json"
+{
+
+
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/funciones.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/funciones.hpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/macros.hpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/main.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/paciente.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/paciente.hpp"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "cpp build active file",
+            "command": "/usr/bin/cpp",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}
