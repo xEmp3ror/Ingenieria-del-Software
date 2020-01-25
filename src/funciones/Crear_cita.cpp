@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "06Crear_cita.hpp"
+#include "Crear_cita.hpp"
 
 using namespace std;
 

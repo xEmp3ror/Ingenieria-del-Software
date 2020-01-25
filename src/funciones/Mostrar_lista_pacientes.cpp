@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
+#include "Mostrar_lista_pacientes.hpp"
 
 using namespace std;
 

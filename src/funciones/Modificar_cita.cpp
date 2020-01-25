@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "07Modificar_cita.hpp"
+#include "Modificar_cita.hpp"
 
 using namespace std;
 
