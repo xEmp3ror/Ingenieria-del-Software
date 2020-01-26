@@ -3,8 +3,8 @@
 
 #include <list>
 
-#include "cita.hpp"
+#include "../include/clases/cita.hpp"
 
-bool ModificarCita(list <Cita> *c,string name,int number);
+bool ModificarCita(list <Cita> *c);
 
 #endif

@@ -17,11 +17,6 @@ bool CrearCita(list <Cita> *c)
 	cin>>name;
 	cout<<"Introduza el numero telefonico del paciente\n";
 	cin>>num;
-	cout<<"Introduzca la hora de la cita\n";
-	cout<<"Hora ";
-	cin>>fyh.tm_hour;
-	cout<<"Minuto ";
-	cin>>fyh.tm_min;
 	cout<<"Introduzca el Dia,Mes,Año de la cita,en numero\n";
 	cout<<"Dia ";
 	cin>>fyh.tm_mday;
@@ -29,6 +24,11 @@ bool CrearCita(list <Cita> *c)
 	cin>>fyh.tm_mon;
 	cout<<"Año ";
 	cin>>fyh.tm_year;
+	cout<<"Introduzca la hora de la cita\n";
+	cout<<"Hora ";
+	cin>>fyh.tm_hour;
+	cout<<"Minuto ";
+	cin>>fyh.tm_min;
 
 	for(it=c->begin();it!=c->end();it++)
 	{

@@ -3,8 +3,9 @@
 
 #include <list>
 
-#include "cita.hpp"
+#include "../include/clases/cita.hpp"
 
-void MostrarCita(list<Cita> *c,string name,int number);
+bool MostrarCita(list<Cita> c);
+
 
 #endif
