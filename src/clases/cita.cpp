@@ -1,4 +1,4 @@
-#include "cita.hpp"
+#include "../include/clases/cita.hpp"
 
 Cita::Cita()
 {

@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
-#include "Mostrar_lista_pacientes.hpp"
+#include "../include/funciones/Mostrar_lista_pacientes.hpp"
 
 using namespace std;
 
-void Mostrar_lista_pacientes(list<Paciente> *p)
+void MostrarListaPacientes(list<Paciente> *p)
 {
 	list<Persona>::iterator it;
 	for(it=p.begin();it!=pacientes_.end();it++)
