@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../../include/funciones/Crear_cita.hpp"
+#include "../../include/funciones/funciones.hpp"
 
 using namespace std;
 

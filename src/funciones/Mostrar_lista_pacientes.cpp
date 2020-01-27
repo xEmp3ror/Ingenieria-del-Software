@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "../../include/funciones/Mostrar_lista_pacientes.hpp"
+#include "../../include/funciones/funciones.hpp"
 
 using namespace std;
 

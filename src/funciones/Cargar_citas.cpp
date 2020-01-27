@@ -5,7 +5,7 @@
 #include <ctime>
 #include <fstream>
 
-#include "../../include/funciones/Cargar_citas.hpp"
+#include "../../include/funciones/funciones.hpp"
 
 void CargarCitas(list<Cita> *c)
 {

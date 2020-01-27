@@ -5,7 +5,7 @@
 #include <cstdio>
 #include <string>
 
-#include "../../include/funciones/Mostrar_cita.hpp"
+#include "../../include/funciones/funciones.hpp"
 
 bool MostrarCita(list<Cita> c)
 {
