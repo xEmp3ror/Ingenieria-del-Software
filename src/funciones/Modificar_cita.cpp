@@ -15,8 +15,8 @@ bool ModificarCita(list <Cita> *c)
 	string info;
 
 	cout<<"Introduzca el nombre del paciente\n";
+	cin.ignore();
 	getline(cin,nombre);
-	cout<<endl;
 	cout<<"Introduzca el numero del paciente\n";
 	cin>>number;
 
@@ -48,9 +48,9 @@ bool ModificarCita(list <Cita> *c)
 	cin>>fyh.tm_mon;
 	cout<<"Año ";
 	cin>>fyh.tm_year;
-	cout<<"Indique la razon de la cita\n"
+	cout<<"Indique la razon de la cita\n";
+	cin.ignore();
 	getline(cin,info);
-	cout<<endl;
 
 	it->setFechayHora(fyh);
 	it->setDescripcion(info);

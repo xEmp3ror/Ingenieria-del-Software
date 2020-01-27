@@ -15,8 +15,8 @@ bool CrearCita(list <Cita> *c)
 	int N=0;
 
 	cout<<"Introduza el nombre del paciente\n";
+	cin.ignore();
 	getline(cin,name);
-	cout<<endl;
 	cout<<"Introduza el numero telefonico del paciente\n";
 	cin>>num;
 	cout<<"Introduzca el Dia,Mes,Año de la cita,en numero\n";
@@ -31,9 +31,9 @@ bool CrearCita(list <Cita> *c)
 	cin>>fyh.tm_hour;
 	cout<<"Minuto: ";
 	cin>>fyh.tm_min;
-	cout<<"Indique las razones de la cita\n"
+	cout<<"Indique las razones de la cita\n";
+	cin.ignore();
 	getline(cin,info);
-	cout<<endl;
 
 	for(it=c->begin();it!=c->end();it++)
 	{
