@@ -12,6 +12,7 @@ void CargarCitas(list<Cita> *c)
 	Cita X;
 	string nombre;
 	string number;
+	string info;
 	string hora;
 	string min;
 	string dia;
@@ -30,7 +31,8 @@ void CargarCitas(list<Cita> *c)
 			getline(fichero,mes,'/');
 			getline(fichero,year,'|');
 			getline(fichero,hora,':');
-			getline(fichero,min,'\n');
+			getline(fichero,min,'|');
+			getline(fichero,info,'\n');
 
 			fecha.tm_mday=stoi(dia);
 			fecha.tm_mon=stoi(mes);
@@ -40,6 +42,7 @@ void CargarCitas(list<Cita> *c)
 			X.setNombre(nombre);
 			X.setTelefono(stoi(number));
 			X.setFechayHora(fecha);
+			X.setDescripcion(info);
 			c->push_back(X);
 		}
 	}

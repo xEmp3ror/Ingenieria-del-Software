@@ -12,6 +12,7 @@ bool ModificarCita(list <Cita> *c)
 	struct tm fyh;
 	int number;
 	string nombre;
+	string info;
 
 	cout<<"Introduzca el nombre del paciente\n";
 	getline(cin,nombre);
@@ -47,7 +48,11 @@ bool ModificarCita(list <Cita> *c)
 	cin>>fyh.tm_mon;
 	cout<<"Año ";
 	cin>>fyh.tm_year;
+	cout<<"Indique la razon de la cita\n"
+	getline(cin,info);
+	cout<<endl;
 
 	it->setFechayHora(fyh);
+	it->setDescripcion(info);
 	return true;
 }
