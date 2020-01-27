@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void MostrarListaPacientes(list<Paciente> *p)
+void MostrarListaPacientes(list<Paciente> p)
 {
 	list<Persona>::iterator it;
 	for(it=p.begin();it!=pacientes_.end();it++)
