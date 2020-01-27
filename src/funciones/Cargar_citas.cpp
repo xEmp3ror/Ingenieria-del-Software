@@ -21,7 +21,7 @@ void CargarCitas(list<Cita> *c)
 	struct tm fecha;
 
 	ifstream fichero;
-	fichero.open("citas.txt");
+	fichero.open("../BD/citas.txt");
 	if(fichero.is_open())
 	{
 		while(getline(fichero,nombre,'|'))
