@@ -2,7 +2,7 @@
 #define MOSTRAR_LISTA_PACIENTES_H
 
 #include <list>
-//#include "../include/clases/pacientes.hpp"
+//#include "../clases/pacientes.hpp"
 
 void MostrarListaPacientes(list<Paciente> *p);
 

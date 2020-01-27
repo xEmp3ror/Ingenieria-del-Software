@@ -1,7 +1,7 @@
 #include <list>
 #include <iostream>
 #include <cstdio>
-#include "../include/funciones/Modificar_cita.hpp"
+#include "../../include/funciones/Modificar_cita.hpp"
 
 using namespace std;
 

@@ -3,7 +3,7 @@
 
 #include <list>
 
-#include "../include/clases/cita.hpp"
+#include "../clases/cita.hpp"
 
 bool CrearCita(list <Cita> *c);
 
