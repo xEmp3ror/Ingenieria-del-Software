@@ -26,8 +26,9 @@ bool MostrarCita(list<Cita> c)
 		if((nombre.compare(it->getNombre())==0)&&(it->getTelefono()==number))
 		{
 			fyh=it->getFechayHora();
-			cout<<it->getNombre()<<"|"<<it->getTelefono()<<"|\n";
-			cout<<"Fecha: "<<fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min;
+			cout<<"Nombre"<<it->getNombre()<<"\n";
+			cout<<"Telefono"<<it->getTelefono()<<"\n";
+			cout<<"Fecha: "<<fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min<<"\n\n";
 			return true;
 		}
 	}
