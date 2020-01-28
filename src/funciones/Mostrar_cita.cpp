@@ -11,18 +11,17 @@ bool MostrarCita(list<Cita> c)
 {
 	string nombre;
 	string apellidos;
-	Paciente temp;
 
 	list<Cita>::iterator it;
 	struct tm fyh;
+	Paciente temp;
 
 	cout<<"Introduzca el nombre del paciente\n";
 	cin.ignore();
 	getline(cin,nombre);
 	cout<<"Introduzca los apellidos del paciente\n";
-	cin.ignore();
-	getline(cin,nombre);
-	
+	getline(cin,apellidos);
+
 	for(it=c.begin();it!=c.end();it++)
 	{
 		temp=it->getPaciente();
@@ -40,4 +39,3 @@ bool MostrarCita(list<Cita> c)
 	}
 	return false;
 }
-

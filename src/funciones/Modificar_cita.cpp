@@ -21,7 +21,6 @@ bool ModificarCita(list <Cita> *c)
 	cin.ignore();
 	getline(cin,nombre);
 	cout<<"Introduzca los apellidos del paciente\n";
-	cin.ignore();
 	getline(cin,apellidos);
 
 
@@ -30,6 +29,7 @@ bool ModificarCita(list <Cita> *c)
 		temp=it->getPaciente();
 		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
+			temp=it->getPaciente();
 			c->erase(it);
 			N++;
 		}
@@ -42,9 +42,6 @@ bool ModificarCita(list <Cita> *c)
 	}
 
 	//Si N es distinto de 0==Hay una cita del paciente
-	temp.setNombre(nombre);
-	temp.setApellidos(apellidos);
-	temp.setTelefono(number);
 	cout<<"Indique la hora nueva del paciente\n";
 	cout<<"Hora ";
 	cin>>fyh.tm_hour;
