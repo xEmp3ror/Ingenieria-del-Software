@@ -4,13 +4,14 @@
 #include <string>
 #include <ctime>
 
+#include "../../include/clases/paciente.hpp"
+
 using namespace std;
 
 class Cita
 {
 	private:
-		string nombre_;
-		int telefono_;
+		Paciente paciente_;
 		struct tm fechayhora_;
 		string descripcion_;
 
@@ -18,13 +19,11 @@ class Cita
 		//Constructor
 		Cita();
 		//Observadores
-		inline void setNombre(string name){ nombre_=name; }
-		inline void setTelefono(int telef) { telefono_=telef; }
+		inline void setPaciente(Paciente p){ paciente_=p; }
 		inline void setFechayHora(struct tm fyh){ fechayhora_=fyh; }
 		inline void setDescripcion(string info){  descripcion_=info; }
 		//Modificadores
-		inline string getNombre() const{ return nombre_; }
-		inline int getTelefono() const{ return telefono_; }
+		inline Paciente getPaciente() const{ return paciente_; }
 		inline struct tm getFechayHora() const{ return fechayhora_; }
 		inline string getDescripcion() const{ return descripcion_; }
 };

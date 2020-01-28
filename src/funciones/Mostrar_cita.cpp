@@ -10,7 +10,8 @@
 bool MostrarCita(list<Cita> c)
 {
 	string nombre;
-	int number;
+	string apellidos;
+	Paciente temp;
 
 	list<Cita>::iterator it;
 	struct tm fyh;
@@ -18,16 +19,19 @@ bool MostrarCita(list<Cita> c)
 	cout<<"Introduzca el nombre del paciente\n";
 	cin.ignore();
 	getline(cin,nombre);
-	cout<<"Introduzca el numero del paciente\n";
-	cin>>number;
+	cout<<"Introduzca los apellidos del paciente\n";
+	cin.ignore();
+	getline(cin,nombre);
 	
 	for(it=c.begin();it!=c.end();it++)
 	{
-		if((nombre.compare(it->getNombre())==0)&&(it->getTelefono()==number))
+		temp=it->getPaciente();
+		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
 			fyh=it->getFechayHora();
-			cout<<"\nNombre: "<<it->getNombre()<<"\n";
-			cout<<"Telefono: "<<it->getTelefono()<<"\n";
+			cout<<"\nNombre: "<<temp.getNombre()<<"\n";
+			cout<<"Apellidos: "<<temp.getApellidos()<<"\n";
+			cout<<"Telefono: "<<temp.getTelefono()<<"\n";
 			cout<<"Fecha: "<<fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min<<"\n";
 			cout<<"Descripcion:\n";
 			cout<<"  ·"<<it->getDescripcion()<<"\n\n";

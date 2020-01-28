@@ -10,7 +10,9 @@
 void CargarCitas(list<Cita> *c)
 {
 	Cita X;
+	Paciente temp;
 	string nombre;
+	string apellidos;
 	string number;
 	string info;
 	string hora;
@@ -26,6 +28,7 @@ void CargarCitas(list<Cita> *c)
 	{
 		while(getline(fichero,nombre,'|'))
 		{
+			getline(fichero,apellidos,'|');
 			getline(fichero,number,'|');
 			getline(fichero,dia,'/');
 			getline(fichero,mes,'/');
@@ -39,8 +42,10 @@ void CargarCitas(list<Cita> *c)
 			fecha.tm_year=stoi(year);
 			fecha.tm_hour=stoi(hora);
 			fecha.tm_min=stoi(min);
-			X.setNombre(nombre);
-			X.setTelefono(stoi(number));
+			temp.setNombre(nombre);
+			temp.setApellidos(apellidos);
+			temp.setTelefono(stoi(number));
+			X.setPaciente(temp);
 			X.setFechayHora(fecha);
 			X.setDescripcion(info);
 			c->push_back(X);

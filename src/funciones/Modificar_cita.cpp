@@ -8,23 +8,27 @@ using namespace std;
 bool ModificarCita(list <Cita> *c)
 {
 	list<Cita>::iterator it;
+	Cita n;
+	Paciente temp;
 	int N=0;
 	struct tm fyh;
 	int number;
 	string nombre;
+	string apellidos;
 	string info;
-	Cita n;
 
 	cout<<"Introduzca el nombre del paciente\n";
 	cin.ignore();
 	getline(cin,nombre);
-	cout<<"Introduzca el numero del paciente\n";
-	cin>>number;
+	cout<<"Introduzca los apellidos del paciente\n";
+	cin.ignore();
+	getline(cin,apellidos);
 
 
 	for(it=c->begin();(it!=c->end()&&(N==0));it++)
 	{
-		if((nombre.compare(it->getNombre())==0)&&(it->getTelefono()==number))
+		temp=it->getPaciente();
+		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
 			c->erase(it);
 			N++;
@@ -38,8 +42,9 @@ bool ModificarCita(list <Cita> *c)
 	}
 
 	//Si N es distinto de 0==Hay una cita del paciente
-	n.setNombre(nombre);
-	n.setTelefono(number);
+	temp.setNombre(nombre);
+	temp.setApellidos(apellidos);
+	temp.setTelefono(number);
 	cout<<"Indique la hora nueva del paciente\n";
 	cout<<"Hora ";
 	cin>>fyh.tm_hour;
@@ -56,6 +61,7 @@ bool ModificarCita(list <Cita> *c)
 	cin.ignore();
 	getline(cin,info);
 
+	n.setPaciente(temp);
 	n.setFechayHora(fyh);
 	n.setDescripcion(info);
 	c->push_back(n);

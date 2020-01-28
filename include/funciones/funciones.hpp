@@ -4,6 +4,7 @@
 #include <list>
 
 #include "../clases/cita.hpp"
+#include "../clases/paciente.hpp"
 
 void MostrarListaPacientes(list<Paciente> p);
 
