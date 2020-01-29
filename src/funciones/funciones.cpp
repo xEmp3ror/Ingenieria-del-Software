@@ -80,65 +80,44 @@ bool CrearCita(list <Cita> *c)
 	int num;
 	struct tm fyh;
 	list<Cita>::iterator it;
-	int N=0;
 
 	cout<<"Introduza el nombre del paciente\n";
 	cin.ignore();
 	getline(cin,name);
 	cout<<"Introduza los apellidos del paciente\n";
 	getline(cin,apellidos);
-	cout<<"Introduza el telefono del paciente\n";
-	cin>>num;
-	temp.setNombre(name);
-	temp.setApellidos(apellidos);
-	temp.setTelefono(num);
-	aux.setPaciente(temp);
-
-	cout<<"Introduzca el Dia,Mes,Año de la cita,en numero\n";
-	cout<<"Dia: ";
-	cin>>fyh.tm_mday;
-	cout<<"Mes: ";
-	cin>>fyh.tm_mon;
-	cout<<"Año: ";
-	cin>>fyh.tm_year;
-	cout<<"Introduzca la hora de la cita\n";
-	cout<<"Hora: ";
-	cin>>fyh.tm_hour;
-	cout<<"Minuto: ";
-	cin>>fyh.tm_min;
-	cout<<"Indique las razones de la cita\n";
-	cin.ignore();
-	getline(cin,info);
-
+	//Busca que no haya otra cita del mismo paciente
 	for(it=c->begin();it!=c->end();it++)
 	{
 		temp=it->getPaciente();
-		//Busca que no haya otra cita del mismo paciente
+
 		if((name.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
 			cout<<"Este paciente ya tiene una cita\n";
-			N++;
+			return false;
 		}
-		//Busca que la fecha y hora seleccionada no coincidan con otra existente
-		/**if(fyh==it->getFechayHora())
-		{
-			cout<<"La hora seleccionada para esta cita ya esta ocupada por otra\n";
-			N++;
-		}*/
 	}
+	temp.setNombre(name);
+	temp.setApellidos(apellidos);
 
-	if(N==0)
+	cout<<"Introduza el telefono del paciente\n";
+	cin>>num;
+	temp.setTelefono(num);
+	aux.setPaciente(temp);
+	
+	do
 	{
-		//Guardamos la nueva cita dentro de la lista
-		aux.setFechayHora(fyh);
-		aux.setDescripcion(info);
-		c->push_back(aux);
-		
-		return true;
-	}else
-	{
-		return false;
-	}
+		InsertFyH(&fyh);
+	}while(Inv_date(*c,fyh)!=false);
+	aux.setFechayHora(fyh);
+
+	cout<<"Indique las razones de la cita\n";
+	cin.ignore();
+	getline(cin,info);
+	aux.setDescripcion(info);
+
+	c->push_back(aux);
+	return true;
 }
 
 bool ModificarCita(list <Cita> *c)
@@ -148,7 +127,6 @@ bool ModificarCita(list <Cita> *c)
 	Paciente temp;
 	int N=0;
 	struct tm fyh;
-	int number;
 	string nombre;
 	string apellidos;
 	string info;
@@ -159,7 +137,7 @@ bool ModificarCita(list <Cita> *c)
 	cout<<"Introduzca los apellidos del paciente\n";
 	getline(cin,apellidos);
 
-
+	//Buscamos que haya una cita asociada al Nombre y Apellidos dados
 	for(it=c->begin();(it!=c->end()&&(N==0));it++)
 	{
 		temp=it->getPaciente();
@@ -178,26 +156,22 @@ bool ModificarCita(list <Cita> *c)
 	}
 
 	//Si N es distinto de 0==Hay una cita del paciente
+	n.setPaciente(temp);
+	//Establecemos nueva hora de la cita
 	cout<<"Indique la hora nueva del paciente\n";
-	cout<<"Hora ";
-	cin>>fyh.tm_hour;
-	cout<<"Minuto ";
-	cin>>fyh.tm_min;
-	cout<<"Indica la fecha nueva del paciente\n";
-	cout<<"Dia ";
-	cin>>fyh.tm_mday;
-	cout<<"Mes ";
-	cin>>fyh.tm_mon;
-	cout<<"Año ";
-	cin>>fyh.tm_year;
+	do
+	{
+		InsertFyH(&fyh);
+	}while(Inv_date(*c,fyh)!=false);
+	n.setFechayHora(fyh);
+
+	//Modificacion de la descripcion de la cita
 	cout<<"Indique la razon de la cita\n";
 	cin.ignore();
 	getline(cin,info);
-
-	n.setPaciente(temp);
-	n.setFechayHora(fyh);
 	n.setDescripcion(info);
 	c->push_back(n);
+	
 	return true;
 }
 
@@ -205,11 +179,11 @@ bool MostrarCita(list<Cita> c)
 {
 	string nombre;
 	string apellidos;
-
 	list<Cita>::iterator it;
 	struct tm fyh;
 	Paciente temp;
 
+	//Pedimos el Nombre y Apellidos del paciente
 	cout<<"Introduzca el nombre del paciente\n";
 	cin.ignore();
 	getline(cin,nombre);
@@ -219,6 +193,8 @@ bool MostrarCita(list<Cita> c)
 	for(it=c.begin();it!=c.end();it++)
 	{
 		temp=it->getPaciente();
+
+		//Si encontramos coincidencia en Nombre y Apellidos se imprime por pantalla la cita encontrada
 		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
 			fyh=it->getFechayHora();
@@ -232,4 +208,120 @@ bool MostrarCita(list<Cita> c)
 		}
 	}
 	return false;
+}
+
+void InsertFyH(struct tm *FH)
+{
+	int cntr=0;
+
+	cout<<"Introduzca el Año,Mes,Dia de la cita,en numero\n";
+	cout<<"Año: ";
+	cin>>FH->tm_year;
+	//Mes
+	do
+	{
+		cout<<"Mes: ";
+		cin>>FH->tm_mon;
+		if((FH->tm_mon<=0)||(FH->tm_mon>=13))
+		{
+			cntr++;
+			cout<<"\nParametro fuera de intervalo permitido [0-12]\n";
+			cout<<"Vuelva a dar el dato pedido\n";
+		}else
+		{
+			cntr=0;
+		}
+	}while(cntr!=0);
+	//Dia
+	do
+	{
+		cout<<"Dia: ";
+		cin>>FH->tm_mday;
+		if((FH->tm_mday<=0)||(FH->tm_mday>=32))
+		{
+			cntr++;
+			cout<<"\nParametro fuera de intervalo permitido [0-31]\n";
+			cout<<"Vuelva a dar el dato pedido\n";
+		}else
+		{
+			cntr=0;
+		}
+	}while(cntr!=0);
+
+	cout<<"\nIntroduzca la hora y minuto de la cita\n";
+	do
+	{
+		cout<<"Hora: ";
+		cin>>FH->tm_hour;
+		if((FH->tm_hour<=-1)||(FH->tm_hour>=24))
+		{
+			cntr++;
+			cout<<"\nParametro fuera de intervalo permitido [0-23]\n";
+			cout<<"Vuelva a dar el dato pedido\n";
+		}else
+		{
+			cntr=0;
+		}
+	}while(cntr!=0);
+
+	do
+	{
+		cout<<"Minuto: ";
+		cin>>FH->tm_min;
+		if((FH->tm_min<=-1)||(FH->tm_min>=60))
+		{
+			cntr++;
+			cout<<"\nParametro fuera de intervalo permitido [0-59]\n";
+			cout<<"Vuelva a dar el dato pedido\n";
+		}else
+		{
+			cntr=0;
+		}
+	}while(cntr!=0);
+}
+
+bool Inv_date(list<Cita> c,struct tm FH)
+{
+	struct tm temp;
+	list<Cita>::iterator it;
+
+	for(it=c.begin();it!=c.end();it++)
+	{
+		temp=it->getFechayHora();
+		if(FH.tm_year==temp.tm_year)
+		{
+			if(FH.tm_mon==temp.tm_mon)
+			{
+				if(FH.tm_mday==temp.tm_mday)
+				{
+					if(FH.tm_hour==temp.tm_hour)
+					{
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void VolcarDatos(list<Cita> c)
+{
+	Paciente temp;
+	list<Cita>::iterator it;
+	struct tm FH;
+
+	ofstream fichero;
+	fichero.open("../BD/citas.txt");
+	if(fichero.is_open())
+	{
+		for(it=c.begin();it!=c.end();it++)
+		{
+			temp=it->getPaciente();
+			FH=it->getFechayHora();
+			fichero<<temp.getNombre()<<"|"<<temp.getApellidos()<<"|"<<temp.getTelefono()<<"|";
+			fichero<<FH.tm_mday<<"/"<<FH.tm_mon<<"/"<<FH.tm_year<<"|"<<FH.tm_hour<<:<<FH.tm_min<<"|";
+			fichero<<it->getDescripcion()<<"\n";
+		}
+	}
 }
