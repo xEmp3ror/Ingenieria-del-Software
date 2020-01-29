@@ -22,3 +22,4 @@
 **Flujos alternativos**:
 
 6.a. Si los datos no se introducen correctamente, el sistema muestra un mensaje de error
+6.b. Si la cita creada coincide en hora y dia con otra el sistema pedira que introduzcas otro dia y hora
