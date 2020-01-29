@@ -93,7 +93,6 @@ bool CrearCita(list <Cita> *c)
 
 		if((name.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
-			cout<<"Este paciente ya tiene una cita\n";
 			return false;
 		}
 	}
