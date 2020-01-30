@@ -1,4 +1,5 @@
 #include "../CLASES/PACIENTE/paciente.hpp"
+#include "../CLASES/HISTORIAL/historial.hpp"
 #include "funciones.hpp"
 #include "macros.hpp"
 #include <iostream>
@@ -26,8 +27,10 @@ void guardarPacientes(std::list<Paciente>& pacientes){
 }
 
 bool insertarPaciente(std::list<Paciente>& pacientes){
-    string nombre, apellido, domicilio, telefono, fechanacimiento,stringedad;
+    string nombre, apellido, domicilio, telefono, fechanacimiento,stringedad, enfermedad, estaEnfermo, sintomas, tratamiento, duracionTratamiento;
     int edad, numerotelefono;
+    bool checkEnfermo;
+    std::list<Historial> historial;
     std::cout<<std::endl;
     std::cout<<BYELLOW<<"Introduzca el nombre del paciente"<<RESET<<std::endl;
     std::getline(std::cin, nombre);  
@@ -70,9 +73,35 @@ bool insertarPaciente(std::list<Paciente>& pacientes){
         std::getline(std::cin, fechanacimiento);
     }
     std::cout<<std::endl;
+    std::cout<<BYELLOW<<"Tiene el paciente alguna enfermedad? Si es así, introduzca 1. Si no ,0."<<RESET<<std::endl;
+    std::getline(std::cin, estaEnfermo);
+    std::cout<<std::endl;
+    checkEnfermo = (estaEnfermo == "1");
+    while(checkEnfermo){
+        std::cout<<BYELLOW<<"Introduzca la enfermedad"<<RESET<<std::endl;
+        std::getline(std::cin, enfermedad);
+        std::cout<<std::endl;
+        std::cout<<BYELLOW<<"Introduzca los sintomas"<<RESET<<std::endl;
+        std::getline(std::cin, sintomas);
+        std::cout<<std::endl;
+        std::cout<<BYELLOW<<"Introduzca el tratamiento"<<RESET<<std::endl;
+        std::getline(std::cin, tratamiento);
+        std::cout<<std::endl;
+        std::cout<<BYELLOW<<"Introduzca la duración del tratamiento"<<RESET<<std::endl;
+        std::getline(std::cin, duracionTratamiento);
+        std::cout<<std::endl;
+        Historial h(enfermedad, sintomas, tratamiento, duracionTratamiento);
+        historial.push_back(h);
+        std::cout<<"si quiere seguir añadiendo enfermedades al historial, introduzca 1, si no, 0."<<std::endl;
+        std::getline(std::cin, estaEnfermo);
+        checkEnfermo = (estaEnfermo == "1");
+    }
     Paciente paciente(nombre, apellido, edad, domicilio, fechanacimiento, numerotelefono);
+    paciente.setHistorial(historial);
+    cout<<"COMO PRUEBA, LOS SINTOMAS SON: "<<paciente.getHistorial().front().getSintomas()<<std::endl;
     if(!existePaciente(paciente, pacientes)){
         pacientes.push_back(paciente);
+
         //std::cout<<"FLAG IMPORTANTE"<<std::endl;
         return true;
     }
