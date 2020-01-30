@@ -111,11 +111,30 @@ cout<<"\n|_______________________________________________________|"<<RESET;
 
             break;
 
-            case 8:{MostrarCita(citas);}
+            case 8:
+            {
+                if(MostrarCita(citas)==false)
+                {
+                    std::cout<<"Error el paciente no tiene ninguna cita\n";
+                }
+            }
 
             break;
 
-            case 9:{VolcarDatos(citas);}
+            case 9:
+            {
+                if(EliminarCita(&citas)==true)
+                {
+                    std::cout<<"Cita eliminada con exito\n";
+                }else
+                {
+                    std::cout<<"Error cita a eliminar no hallada\n";
+                }
+            }
+
+            break;
+
+            case 10:{VolcarDatos(citas);}
 
             break;
 
@@ -123,7 +142,7 @@ cout<<"\n|_______________________________________________________|"<<RESET;
 
         }
 
-    }while(selection!=6);
+    }while(selection!=14);
     
 
     return 0;

@@ -119,6 +119,34 @@ bool CrearCita(list <Cita> *c)
 	return true;
 }
 
+bool EliminarCita(list <Cita> *c)
+{
+	list<Cita>::iterator it;
+	Paciente temp;
+	string nombre;
+	string apellidos;
+
+	cout<<"Introduzca el nombre del paciente\n";
+	cin.ignore();
+	getline(cin,nombre);
+	cout<<"Introduzca los apellidos del paciente\n";
+	getline(cin,apellidos);
+
+	//Buscamos que haya una cita asociada al Nombre y Apellidos dados
+	for(it=c->begin();it!=c->end();it++)
+	{
+		temp=it->getPaciente();
+
+		//Si el sistema localiza la cita que buscabamos la elimina de la lista
+		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
+		{
+			c->erase(it);
+			return true;
+		}
+	}
+	return false;
+}
+
 bool ModificarCita(list <Cita> *c)
 {
 	list<Cita>::iterator it;

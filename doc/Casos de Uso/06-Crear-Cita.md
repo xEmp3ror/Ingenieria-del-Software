@@ -7,13 +7,13 @@
 **Actores secundarios**: Paciente
 
 **Precondiciones**:
-* Ninguna
+* No exista una cita del mismo paciente.
 
 **Flujo principal**:
 1. El usuario desea crear una cita para un paciente.
 1. El usuario inicia el programa y solicita crear una cita.
 1. El usuario introduce todos los datos del paciente.
-1. El sistema confirma la creacion de la cita y la muestra por pantalla.
+1. El sistema confirma la creacion de la cita.
 
 **Postcondiciones**:
 

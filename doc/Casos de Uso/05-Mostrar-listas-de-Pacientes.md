@@ -7,7 +7,7 @@
 **Actores secundarios**: Pacientes
 
 **Precondiciones**:
-* Necesario que exista 1 Paciente como mínimo
+* Necesario que exista 1 Paciente como mínimo.
 
 **Flujo principal**:
 1. El usuario desea consultar los datos de todos pacientes.

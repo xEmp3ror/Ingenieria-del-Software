@@ -1,7 +1,7 @@
-## Mostrar Cita
+## Eliminar Cita
 
-**ID**: 08
-**Descripción**: El sistema muestra la cita de un paciente
+**ID**: 13
+**Descripción**: El sistema elimina la cita de un paciente
 
 **Actores principales**: Usuario.
 **Actores secundarios**: Paciente.
@@ -13,11 +13,11 @@
 1. El usuario desea consultar la cita de un paciente.
 1. El usuario inicia el programa y solicita una vision de la cita de un paciente.
 1. El usuario introduce el nombre y apellido del paciente del cual desea ver su cita.
-1. El sistema muestra por pantalla los datos del paciente y su cita prevista.
+1. El sistema elimina la cita asociada al paciente dado.
 
 **Postcondiciones**:
 
-* Se muestran al usuario la cita del paciente deseada.
+* Devuelve un mensaje de confirmacion de eliminacion.
 
 **Flujos alternativos**:
 
