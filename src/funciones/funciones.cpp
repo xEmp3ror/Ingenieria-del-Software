@@ -165,7 +165,7 @@ bool ModificarCita(list <Cita> *c)
 	getline(cin,apellidos);
 
 	//Buscamos que haya una cita asociada al Nombre y Apellidos dados
-	for(it=c->begin();(it!=c->end()&&(N==0));it++)
+	for(it=c->begin();(it!=c->end()&&N==0);it++)
 	{
 		temp=it->getPaciente();
 		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
@@ -184,19 +184,51 @@ bool ModificarCita(list <Cita> *c)
 
 	//Si N es distinto de 0==Hay una cita del paciente
 	n.setPaciente(temp);
-	//Establecemos nueva hora de la cita
-	cout<<"Indique la hora nueva del paciente\n";
 	do
 	{
-		InsertFyH(&fyh);
-	}while(Inv_date(*c,fyh)!=false);
-	n.setFechayHora(fyh);
+		cout<<"\nIndique que parametro de la cita desea modificar: 1.Telefono/2.Fecha/3.Descripcion/4.Nada\n";
+		cin>>N;
+		switch(N)
+		{
+			case 1:
+			{
+				cout<<"Introduzca el nuevo telefono del paciente\n";
+				cin>>N;
+				temp.setTelefono(N);
+				n.setPaciente(temp);
+			}break;
 
-	//Modificacion de la descripcion de la cita
-	cout<<"Indique la razon de la cita\n";
-	cin.ignore();
-	getline(cin,info);
-	n.setDescripcion(info);
+			case 2:
+			{
+				cout<<"Indique la hora nueva del paciente\n";
+				do
+				{
+					InsertFyH(&fyh);
+				}while(Inv_date(*c,fyh)!=false);
+				n.setFechayHora(fyh);
+			}break;
+
+			case 3:
+			{
+				cout<<"Describa la razon de la cita\n";
+				cin.ignore();
+				getline(cin,info);
+				n.setDescripcion(info);
+			}break;
+
+			case 4:
+			{
+				//En caso de que se elija la opcion 4
+			}break;
+
+			default:
+			{
+				cout<<"La opcion elegida no esta dentro de las posibles a realizar\n";
+			}break;
+		}
+
+	}while(N!=4);
+	
 	c->push_back(n);
 	
 	return true;
@@ -237,25 +269,88 @@ bool MostrarCita(list<Cita> c)
 	return false;
 }
 
-bool ModificarHistorial(list <Paciente> *p)
+bool ModificarHistorial(list <Historial> *h)
 {
-	list<Historial> temp;
-	list<Paciente>::iterator itp;
-	string nombre,apellidos;
+	Historial temp;
+	list<Historial> h;
+	list<Historial>::iterator ith;
+	string enfermedad,mod;
+	int cntr=0;
 
-	cout<<"Indique el nombre del paciente a modificar su historial\n";
-	cin.ignore();
-	getline(cin,nombre);
-	cout<<"Indique el nombre del paciente a modificar su historial\n";
-	getline(cin,apellidos);
-
-	for(itp=p->begin();itp!=p->end();itp++)
+	cout<<"Se procedera a mostrar el historial del paciente\n";
+	cout<<"---------Historial---------\n";
+	for(ith=h->begin();ith!=h->end();ith++)
 	{
-		if((nombre.compare(itp->getNombre())==0)&&(apellidos.compare(itp->getApellidos()==0)))
+		cout<<"  ·Enfermedad:"<<h->getEnfermedad()<<"\n";
+		cout<<"  ·Sintomas:"<<h->getSintomas()<<"\n";
+		cout<<"  ·Tratamiento:"<<h->getTratamiento()<<"\n";
+		cout<<"  ·Duracion tratamiento:"<<h.getDuracionTratamiento()<<"\n";
+	}
+	cout<<"\nReferente a que enfermedad desea modificar el historial\n";
+	cin.ignore();
+	getline(cin,enfermedad);
+	for(ith=h->begin();ith!=h->end();ith++)
+	{
+		if(enfermedad.compare(ith->getEnfermedad())==0)
 		{
-			
+			temp=ith;
+			h->erase(ith);
+			cntr++;
 		}
 	}
+	if(cntr==0)
+	{
+		cout<<"Error el paciente no tiene tal enfermedad\n";
+		return false;
+	}
+
+	temp.setEnfermedad(enfermedad);
+	do
+	{
+		cout<<"\nIndique que desea modificar: 1.Sintomas /2.Tratamiento /3.Duracion de tratamiento/4.Nada\n";
+		cin>>cntr;
+		switch(cntr)
+		{
+			case 1:
+			{
+				cout<<"Introduzca los nuevos sintomas\n";
+				cin.ignore();
+				getline(cin,mod);
+				temp.setSintomas(mod);
+
+			}break;
+
+			case 2:
+			{
+				cout<<"Introduzca el nuevo tratamiento\n";
+				cin.ignore();
+				getline(cin,mod);
+				temp.setTratamiento(mod);
+
+			}break;
+
+			case 3:
+			{
+				cout<<"Introduzca la nueva duracion del tratamiento\n";
+				cin.ignore();
+				getline(cin,mod);
+				temp.setDuracionTratamiento(mod);
+
+			}break;
+
+			case 4:
+			{
+				//Solo para cuando se introduzca valor 4
+			}break;
+
+			default:
+			{
+				cout<<"La opcion elegida no esta dentro de las posibles a realizar\n";
+			}
+		}
+	}while(cntr!=4);
+	h->push_back(temp);
+	return true;
 }
 
 void InsertFyH(struct tm *FH)
