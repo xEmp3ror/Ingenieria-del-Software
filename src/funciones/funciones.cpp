@@ -237,6 +237,27 @@ bool MostrarCita(list<Cita> c)
 	return false;
 }
 
+bool ModificarHistorial(list <Paciente> *p)
+{
+	list<Historial> temp;
+	list<Paciente>::iterator itp;
+	string nombre,apellidos;
+
+	cout<<"Indique el nombre del paciente a modificar su historial\n";
+	cin.ignore();
+	getline(cin,nombre);
+	cout<<"Indique el nombre del paciente a modificar su historial\n";
+	getline(cin,apellidos);
+
+	for(itp=p->begin();itp!=p->end();itp++)
+	{
+		if((nombre.compare(itp->getNombre())==0)&&(apellidos.compare(itp->getApellidos()==0)))
+		{
+			
+		}
+	}
+}
+
 void InsertFyH(struct tm *FH)
 {
 	int cntr=0;

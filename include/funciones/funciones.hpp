@@ -16,6 +16,8 @@ bool MostrarCita(list<Cita> c);
 
 bool ModificarCita(list <Cita> *c);
 
+bool ModificarHistorial(list <Paciente> *p);
+
 //Carga las citas que existen dentro del documento citas.txt en la carpeta BD
 void CargarCitas(list <Cita> *c);
 
