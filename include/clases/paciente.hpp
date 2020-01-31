@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cstdio>
 #include <list>
+#include "../HISTORIAL/historial.hpp"
+
 using namespace std;
 
 class Paciente {
@@ -15,6 +17,7 @@ class Paciente {
     string domicilio_;
     string fechaNacimiento_;
     int telefono_;
+    std::list<Historial> historial_;
     
   public:
     Paciente(const string &nombre="none", const string &apellidos="none", const int &edad=0, const string& domicilio="none", const string& fechanacimiento="none", const int& telefono=0): 
@@ -30,6 +33,8 @@ class Paciente {
     void setDomicilio(const string &domicilio){domicilio_=domicilio;}
     void setTelefono(const int& telefono){telefono_=telefono;}
     const int& getTelefono(){return telefono_;}
+    const std::list<Historial> getHistorial(){return historial_;}
+    void setHistorial(const std::list<Historial>& historial){historial_ = historial;}
     //Paciente & insertarPaciente(const string &nombre, const string &apellidos);
     //Paciente & modificarPaciente(const string &nombre, const string &apellidos);
     //bool eliminarPaciente(const string &nombre, const string & apellidos);
