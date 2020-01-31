@@ -1,4 +1,4 @@
-##Requisitos del Proyecto de IS
+## Requisitos del Proyecto de IS.
 
 1. Insertar Paciente.
 1. Modificar Paciente.
@@ -12,3 +12,4 @@
 1. Añadir datos a Historial de Paciente.
 1. Modificar datos del Historial de Paciente.
 1. Volcar datos a fichero.
+1. Eliminar cita.
