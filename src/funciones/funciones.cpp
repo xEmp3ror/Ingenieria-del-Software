@@ -99,8 +99,16 @@ bool CrearCita(list <Cita> *c)
 	temp.setNombre(name);
 	temp.setApellidos(apellidos);
 
-	cout<<"Introduza el telefono del paciente\n";
+	cout<<"Introduza el telefono del paciente (no mas de 9 digitos)\n";
 	cin>>num;
+	do
+	{
+		if(num>=1000000000)
+		{
+			cout<<"Error. Introduzca otra vez el telefono(9 digitos)\n";
+			cin>>num;
+		}
+	}while(num>=1000000000);
 	temp.setTelefono(num);
 	aux.setPaciente(temp);
 	
@@ -165,12 +173,14 @@ bool ModificarCita(list <Cita> *c)
 	getline(cin,apellidos);
 
 	//Buscamos que haya una cita asociada al Nombre y Apellidos dados
-	for(it=c->begin();(it!=c->end()&&N==0);it++)
+	for(it=c->begin();(it!=c->end())&&(N==0);it++)
 	{
 		temp=it->getPaciente();
 		if((nombre.compare(temp.getNombre())==0)&&(apellidos.compare(temp.getApellidos())==0))
 		{
-			temp=it->getPaciente();
+			n.setPaciente(it->getPaciente());
+			n.setFechayHora(it->getFechayHora());
+			n.setDescripcion(it->getDescripcion());
 			c->erase(it);
 			N++;
 		}
@@ -181,9 +191,16 @@ bool ModificarCita(list <Cita> *c)
 	{
 		return false;
 	}
+	temp=n.getPaciente();
+	fyh=n.getFechayHora();
+	cout<<"\nNombre: "<<temp.getNombre()<<"\n";
+			cout<<"Apellidos: "<<temp.getApellidos()<<"\n";
+			cout<<"Telefono: "<<temp.getTelefono()<<"\n";
+			cout<<"Fecha: "<<fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min<<"\n";
+			cout<<"Descripcion:\n";
+			cout<<"  ·"<<n.getDescripcion()<<"\n\n";
 
 	//Si N es distinto de 0==Hay una cita del paciente
-	n.setPaciente(temp);
 	do
 	{
 		cout<<"\nIndique que parametro de la cita desea modificar: 1.Telefono/2.Fecha/3.Descripcion/4.Nada\n";
@@ -192,8 +209,16 @@ bool ModificarCita(list <Cita> *c)
 		{
 			case 1:
 			{
-				cout<<"Introduzca el nuevo telefono del paciente\n";
+				cout<<"Introduza el telefono del paciente (no mas de 9 digitos)\n";
 				cin>>N;
+				do
+				{
+					if(N>=1000000000)
+					{
+						cout<<"Error. Introduzca otra vez el telefono(no mas de 9 digitos)\n";
+						cin>>N;
+					}
+				}while(N>=1000000000);
 				temp.setTelefono(N);
 				n.setPaciente(temp);
 			}break;
