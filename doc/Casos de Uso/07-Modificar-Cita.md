@@ -23,3 +23,5 @@
 **Flujos alternativos**:
 
 7.a. Si la cita a modificar no existe, el sistema muestra un mensaje de error
+7.b. Si la cita a modificar coincide en hora y dia con otra el sistema pedira introducir otro
+	 dia y hora

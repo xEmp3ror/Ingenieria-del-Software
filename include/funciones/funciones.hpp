@@ -1,6 +1,10 @@
-#ifndef _FUNCIONES_HPP_
-#define _FUNCIONES_HPP_
-#include "../CLASES/PACIENTE/paciente.hpp"
+#ifndef FUNCIONES_HPP
+#define FUNCIONES_HPP
+
+#include <list>
+
+#include "../clases/cita.hpp"
+#include "../clases/paciente.hpp"
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -28,5 +32,29 @@ Paciente ingresarDatos();
 bool operator==(const Paciente& p1, const Paciente& p2);
 
 bool checkFechaNacimiento(const string &fecha);
+
+void MostrarListaPacientes(list<Paciente> p);
+
+bool CrearCita(list <Cita> *c);
+
+bool EliminarCita(list <Cita> *c);
+
+bool MostrarCita(list<Cita> c);
+
+bool ModificarCita(list <Cita> *c);
+
+bool ModificarHistorial(list <Historial> *h);
+
+//Carga las citas que existen dentro del documento citas.txt en la carpeta BD
+void CargarCitas(list <Cita> *c);
+
+//Funcion para introducir la hora de una cita bajo restringciones
+void InsertFyH(struct tm *FH);
+
+//Funcion que nos permite comprobar que la hora de una cita no coincida con ninguna otra de la lista
+bool Inv_date(list<Cita> c,struct tm FH);
+
+//Guarda la lista de citas en un fichero
+void VolcarDatos(list<Cita> c);
 
 #endif
