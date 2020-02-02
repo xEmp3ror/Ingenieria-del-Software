@@ -1,0 +1,46 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/funciones.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/funciones.hpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/macros.hpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/main.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/paciente.cpp",
+                "/home/gonzalo/Escritorio/IS/Ingenieria-del-Software/src/001_Insertar_Paciente/paciente.hpp"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "cpp build active file",
+            "command": "/usr/bin/cpp",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}
