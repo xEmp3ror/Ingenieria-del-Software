@@ -272,7 +272,6 @@ bool MostrarCita(list<Cita> c)
 bool ModificarHistorial(list <Historial> *h)
 {
 	Historial temp;
-	list<Historial> h;
 	list<Historial>::iterator ith;
 	string enfermedad,mod;
 	int cntr=0;
