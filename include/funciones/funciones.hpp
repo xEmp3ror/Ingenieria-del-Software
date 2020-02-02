@@ -5,6 +5,33 @@
 
 #include "../clases/cita.hpp"
 #include "../clases/paciente.hpp"
+#include <string>
+#include <iostream>
+#include <cstdio>
+
+bool insertarPaciente(std::list<Paciente>& pacientes);
+
+bool modificarPaciente(std::list<Paciente>& pacientes);
+
+bool eliminarPaciente(std::list<Paciente>& pacientes);
+
+void guardarPacientes(std::list<Paciente>& pacientes);
+
+bool existePaciente(Paciente& p, std::list<Paciente>& pacientes);
+
+void cargarPacientes(std::list<Paciente>& pacientes);
+
+bool fileEmpty(std::ifstream& file);
+
+void recorrerLista(std::list<Paciente>& pacientes);
+
+Paciente buscarPaciente(std::list<Paciente>& pacientes);
+
+Paciente ingresarDatos();
+
+bool operator==(const Paciente& p1, const Paciente& p2);
+
+bool checkFechaNacimiento(const string &fecha);
 
 void MostrarListaPacientes(list<Paciente> p);
 
