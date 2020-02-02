@@ -8,6 +8,8 @@
 #include <list>
 
 #include "../../include/funciones/funciones.hpp"
+#include "../../include/funciones/historial.hpp"
+#include "../../include/funciones/cita.hpp"
 
 using namespace std;
 
@@ -294,6 +296,26 @@ bool MostrarCita(list<Cita> c)
 	return false;
 }
 
+bool MostrarListaCitas(list<Cita> *c,string name,int number) {
+
+	list<Cita>::iterator it;
+	struct tm fyh;
+	
+	for (it=p.begin();it!=pacientes_.end();it++) {
+
+		cout << "Cita con : " << it->getNombre() << "." << endl;
+        cout << "El día   : " << fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min << endl;
+        cout << "Teléfono : " << it->getTelefono() << "." << endl;
+        cout << "Dirección: " << it->getDireccion() << "." << endl;
+        cout << endl;
+        cout << "-------------------------------------------------" << endl;
+        cout << endl;
+
+	}
+
+	return false;
+}
+
 bool ModificarHistorial(list <Historial> *h)
 {
 	Historial temp;
@@ -375,6 +397,73 @@ bool ModificarHistorial(list <Historial> *h)
 	}while(cntr!=4);
 	h->push_back(temp);
 	return true;
+}
+
+
+bool buscarHistorial(Paciente * p, vector <Historial> * v) {
+
+    bool status = false;
+    string nombre = p->getNombre();
+    string apellido = p->getApellidos();
+
+    fstream f("Historial de Pacientes.txt", ios::in);
+
+    char fnombre[150], fapellido[150], fecha[150], sintomas[150], alergias[150];
+
+    if(f.is_open()) {
+
+        while(f.getline(fnombre, 150, ',')) {
+
+            f.getline(fapellido, 150, ',');
+            f.getline(fecha, 150, ',');
+            f.getline(sintomas, 150, ',');
+            f.getline(alergias, 150, '\n');
+
+            if(fnombre == nombre && fapellido == apellido) {
+
+                v -> push_back(Historial(p, fecha, sintomas, alergias));
+            }
+        }
+
+        f.close();
+        status = true;
+    }
+
+    return status;
+}
+
+
+void guardarHistorial(std::list<Paciente>& pacientes) {
+
+    std::list<Paciente>::iterator i = pacientes.begin();
+	list<Paciente>::iterator j = pacientes.historial
+    std::ofstream fichero;
+    fichero.open ("../BD/historial.txt");
+    
+    for(i = pacientes.begin(); i != pacientes.end(); i++) {
+
+		for ()
+
+        fichero << i->getNombre()<< "|" << i->getApellidos()<< "|"<< i->getHistorial().getEnfermedad()<< "|"<<i->getHistorial().getTratamiento()<< "|"<< i->getFechaNacimiento()<<"|"<< i->getTelefono()<<"\n";
+
+    }
+    
+    fichero.close();
+}
+
+
+void verHistorial() {
+
+    cout << endl;
+    cout << "Mostrando el historial de " << getPaciente()->getNombre() << " " << getPaciente()->getApellidos() << "." << endl;
+    cout << endl;
+    cout << "Fecha del expediente: " << getFecha() << "." << endl;
+    cout << "Sintomas del paciente: " << getSintomas() << "." << endl;
+    cout << "Alergias del paciente: " << getAlergias() << "." << endl;
+    cout << endl;
+    cout << "Medicación aplicada: " << getMedicacion() << "." << endl;
+    cout << endl;
+
 }
 
 void InsertFyH(struct tm *FH)

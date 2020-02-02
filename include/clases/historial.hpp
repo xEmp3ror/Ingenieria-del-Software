@@ -26,6 +26,9 @@ class Historial {
         const string& getTratamiento() const {return tratamiento_;};
         const string& getDuracionTratamiento() const {return duracionTratamiento_;}
         const string& getSintomas() const {return sintomas_;}
+
+        bool guardarHistorial();
+        void verHistorial();
 };
 
 #endif
