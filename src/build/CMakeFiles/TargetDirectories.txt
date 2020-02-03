@@ -1,3 +1,0 @@
-/mnt/c/UCO/Ingenieria-del-Software/src/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/UCO/Ingenieria-del-Software/src/build/CMakeFiles/main.x.dir
-/mnt/c/UCO/Ingenieria-del-Software/src/build/CMakeFiles/edit_cache.dir

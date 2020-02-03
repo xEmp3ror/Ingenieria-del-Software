@@ -592,7 +592,8 @@ bool operator==(const Paciente& p1, const Paciente& p2){
     return p1.getNombre() == p2.getNombre() && p1.getApellidos() == p2.getApellidos();
 }
 
-void guardarPacientes(std::list<Paciente>& pacientes){
+void guardarPacientes(std::list<Paciente>& pacientes) {
+    
     std::list<Paciente>::iterator i=pacientes.begin();
     std::ofstream fichero;
     fichero.open ("../BD/pacientes.txt");
@@ -929,20 +930,19 @@ Paciente ingresarDatos(){
 }
 
 
-void cargarPacientes(std::list<Paciente>& pacientes){
-    std::list<Paciente>::iterator it;
+void cargarPacientes(std::list<Paciente>& pacientes) {
+
     std::ifstream fichero;
-    string linea;
-    int entero;
-    string nombre, apellidos, fechanacimiento, domicilio;
-    int telefono;
-    int edad;
-    //fichero.close();
+
+    int entero, telefono, edad;
+    string nombre, apellidos, fechanacimiento, domicilio, linea;
+
     fichero.open ("../BD/pacientes.txt");
-    //fichero.seekg (0, ios::beg);
-    it=pacientes.begin();
+    fichero.seekg (0, ios::beg);
+
     Paciente p;
-    while(getline(fichero, nombre, '|')){
+
+    while(getline(fichero, nombre, '|')) {
         getline(fichero, apellidos, '|');
         getline(fichero, linea, '|');
         edad = std::stoi(linea);
@@ -950,15 +950,17 @@ void cargarPacientes(std::list<Paciente>& pacientes){
         getline(fichero, fechanacimiento, '|');
         getline(fichero, linea, '\n');
         telefono = std::stoi(linea);
+
         p.setEdad(edad);
         p.setNombre(nombre);
         p.setApellidos(apellidos);
         p.setDomicilio(domicilio);
         p.setFechaNacimineto(fechanacimiento);
         p.setTelefono(telefono);
+
         pacientes.push_back(p);
-        it++;
     }
+
     fichero.close();
 }
 
