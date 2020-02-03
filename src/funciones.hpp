@@ -2,12 +2,12 @@
 #define FUNCIONES_HPP
 
 #include <list>
-
-#include "../clases/cita.hpp"
-#include "../clases/paciente.hpp"
 #include <string>
 #include <iostream>
 #include <cstdio>
+
+#include "cita.hpp"
+#include "paciente.hpp"
 
 bool insertarPaciente(std::list<Paciente>& pacientes);
 
@@ -43,9 +43,9 @@ bool MostrarCita(list<Cita> c);
 
 bool ModificarCita(list <Cita> *c);
 
-bool MostrarListaCitas(list<Cita> *c,string name,int number);
+bool MostrarListaCitas(list<Cita> *c);
 
-bool ModificarHistorial(list <Historial> *h);
+//bool ModificarHistorial(list <Historial> *h);
 
 //Carga las citas que existen dentro del documento citas.txt en la carpeta BD
 void CargarCitas(list <Cita> *c);

@@ -1,4 +1,4 @@
-#include "../../include/clases/cita.hpp"
+#include "cita.hpp"
 
 #include <string>
 #include <ctime>

@@ -7,9 +7,10 @@
 #include <fstream>
 #include <list>
 
-#include "../../include/funciones/funciones.hpp"
-#include "../../include/funciones/historial.hpp"
-#include "../../include/funciones/cita.hpp"
+#include "funciones.hpp"
+//#include "historial.hpp"
+#include "cita.hpp"
+#include "macros.hpp"
 
 using namespace std;
 
@@ -84,7 +85,7 @@ bool CrearCita(list <Cita> *c)
 	list<Cita>::iterator it;
 
 	cout<<"Introduza el nombre del paciente\n";
-	cin.ignore();
+//	cin.ignore();
 	getline(cin,name);
 	cout<<"Introduza los apellidos del paciente\n";
 	getline(cin,apellidos);
@@ -296,17 +297,22 @@ bool MostrarCita(list<Cita> c)
 	return false;
 }
 
-bool MostrarListaCitas(list<Cita> *c,string name,int number) {
+bool MostrarListaCitas(list<Cita> *c) {
 
 	list<Cita>::iterator it;
-	struct tm fyh;
 	
-	for (it=p.begin();it!=pacientes_.end();it++) {
+    Paciente p;
+    struct tm fyh;
+	
+	for (it=c->begin(); it!=c->end(); it++) {
 
-		cout << "Cita con : " << it->getNombre() << "." << endl;
-        cout << "El día   : " << fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min << endl;
-        cout << "Teléfono : " << it->getTelefono() << "." << endl;
-        cout << "Dirección: " << it->getDireccion() << "." << endl;
+        p = it->getPaciente();
+        fyh = it->getFechayHora();
+
+		cout << "Cita con   : " << p.getNombre() << " " << p.getApellidos() << "." << endl;
+        cout << "El día     : " << fyh.tm_mday<<"/"<<fyh.tm_mon<<"/"<<fyh.tm_year<<" a las "<<fyh.tm_hour<<":"<<fyh.tm_min << endl;
+        cout << "Teléfono   : " << p.getTelefono() << "." << endl;
+        cout << "Descripcion: " << it->getDescripcion() << "." << endl;
         cout << endl;
         cout << "-------------------------------------------------" << endl;
         cout << endl;
@@ -315,7 +321,7 @@ bool MostrarListaCitas(list<Cita> *c,string name,int number) {
 
 	return false;
 }
-
+/*
 bool ModificarHistorial(list <Historial> *h)
 {
 	Historial temp;
@@ -465,7 +471,7 @@ void verHistorial() {
     cout << endl;
 
 }
-
+*/
 void InsertFyH(struct tm *FH)
 {
 	int cntr=0;
@@ -576,7 +582,7 @@ void VolcarDatos(list<Cita> c)
 			temp=it->getPaciente();
 			FH=it->getFechayHora();
 			fichero<<temp.getNombre()<<"|"<<temp.getApellidos()<<"|"<<temp.getTelefono()<<"|";
-			fichero<<FH.tm_mday<<"/"<<FH.tm_mon<<"/"<<FH.tm_year<<"|"<<FH.tm_hour<<:<<FH.tm_min<<"|";
+			fichero<<FH.tm_mday<<"/"<<FH.tm_mon<<"/"<<FH.tm_year<<"|"<<FH.tm_hour<<":"<<FH.tm_min<<"|";
 			fichero<<it->getDescripcion()<<"\n";
 		}
 	}
@@ -603,7 +609,7 @@ bool insertarPaciente(std::list<Paciente>& pacientes){
     string nombre, apellido, domicilio, telefono, fechanacimiento,stringedad, enfermedad, estaEnfermo, sintomas, tratamiento, duracionTratamiento;
     int edad, numerotelefono;
     bool checkEnfermo;
-    std::list<Historial> historial;
+//    std::list<Historial> historial;
     std::cout<<std::endl;
     std::cout<<BYELLOW<<"Introduzca el nombre del paciente"<<RESET<<std::endl;
     std::getline(std::cin, nombre);  
@@ -646,7 +652,7 @@ bool insertarPaciente(std::list<Paciente>& pacientes){
         std::getline(std::cin, fechanacimiento);
     }
     std::cout<<std::endl;
-    std::cout<<BYELLOW<<"Tiene el paciente alguna enfermedad? Si es así, introduzca 1. Si no ,0."<<RESET<<std::endl;
+/*    std::cout<<BYELLOW<<"Tiene el paciente alguna enfermedad? Si es así, introduzca 1. Si no ,0."<<RESET<<std::endl;
     std::getline(std::cin, estaEnfermo);
     std::cout<<std::endl;
     checkEnfermo = (estaEnfermo == "1");
@@ -669,9 +675,10 @@ bool insertarPaciente(std::list<Paciente>& pacientes){
         std::getline(std::cin, estaEnfermo);
         checkEnfermo = (estaEnfermo == "1");
     }
+*/
     Paciente paciente(nombre, apellido, edad, domicilio, fechanacimiento, numerotelefono);
-    paciente.setHistorial(historial);
-    cout<<"COMO PRUEBA, LOS SINTOMAS SON: "<<paciente.getHistorial().front().getSintomas()<<std::endl;
+//    paciente.setHistorial(historial);
+//    cout<<"COMO PRUEBA, LOS SINTOMAS SON: "<<paciente.getHistorial().front().getSintomas()<<std::endl;
     if(!existePaciente(paciente, pacientes)){
         pacientes.push_back(paciente);
 
@@ -679,7 +686,7 @@ bool insertarPaciente(std::list<Paciente>& pacientes){
         return true;
     }
     else{
-        std::cout<<"este paciente ya existe en la base de datos"<<std::endl;
+        std::cout<<"Este paciente ya existe en la base de datos"<<std::endl;
         return false;
     }
     //std::cout<<"salio del bucle"<<std::endl;
@@ -932,7 +939,7 @@ void cargarPacientes(std::list<Paciente>& pacientes){
     int edad;
     //fichero.close();
     fichero.open ("../BD/pacientes.txt");
-    fichero.seekg (0, ios::beg);
+    //fichero.seekg (0, ios::beg);
     it=pacientes.begin();
     Paciente p;
     while(getline(fichero, nombre, '|')){

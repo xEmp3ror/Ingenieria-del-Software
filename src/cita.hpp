@@ -3,7 +3,7 @@
 
 #include <string>
 #include <ctime>
-#include "../../include/clases/paciente.hpp"
+#include "paciente.hpp"
 
 using namespace std;
 
